@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Environment Variables
+.env
+.env.*
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yardn-debug.log*
+pnpm-debug.log*
+
+# OS/ Editor
+.DS_Store
+.vscode/
+.idea/
+
+# Coverage/testing
+coverage/
+
+# Runtime / temp
+.tmp/
+temp/
