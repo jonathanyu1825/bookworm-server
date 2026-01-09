@@ -1,5 +1,6 @@
 import axios from "axios";
 import dotenv from "dotenv";
+import { setCache, getCache } from "../services/cacheService.js";
 
 dotenv.config();
 const ISBN_KEY = process.env.ISBN_KEY;
@@ -45,8 +46,22 @@ const instance = axios.create({
 
 export async function bookService(id) {
   try {
+
+    // cache for redis here 
+    // const cached = await redis.get(`book-${id}`);
+    // if (cached) {
+    //   console.log(cached);
+    // }
+
+    const key = `book-${id}`;
+    const cached = await getCache(key);
+    if (cached) {
+      return cached;
+    }
+
     const response = await instance.get(`/book/${id}`);
-    // console.log(response.data);
+    setCache(key, response.data.book);
+    // await redis.set(`book-${id}`, JSON.stringify(response.data.book));
     return response.data.book;
   } catch (error) {
     console.log(error);

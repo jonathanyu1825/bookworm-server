@@ -6,6 +6,10 @@ import bookRoutes from "./src/routes/books.routes.js";
 import searchRoutes from "./src/routes/search.routes.js";
 import trendingRoutes from "./src/routes/trending.routes.js";
 
+import { connectRedis } from "./src/config/redis.js";
+
+await connectRedis();
+
 dotenv.config();
 
 const app = express();
