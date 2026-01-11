@@ -60,10 +60,10 @@ export async function bookService(id) {
     }
 
     const response = await instance.get(`/book/${id}`);
-    setCache(key, response.data.book);
+    setCache(key, response.data.book, 7200);
     // await redis.set(`book-${id}`, JSON.stringify(response.data.book));
     return response.data.book;
   } catch (error) {
-    console.log(error);
+    console.log("error here");
   }
 }

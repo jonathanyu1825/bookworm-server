@@ -33,7 +33,7 @@ export async function searchService(query) {
     const key = `search-${query}`;
     const cached = await getCache(key);
     if (cached) {
-      console.log("helloooooo");
+      console.log(cached);
       return cached;
     }
 
