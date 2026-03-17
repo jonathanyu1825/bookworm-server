@@ -6,6 +6,6 @@ export async function loginUser(req, res) {
     const user = await loginUserService(username, password);
     res.json(user);
   } catch (error) {
-    console.error("login error", error);
+    return res.status(401).json({ message: "username not found" });
   }
 }
