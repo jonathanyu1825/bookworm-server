@@ -6,7 +6,6 @@ export async function loginUser(req, res) {
     const user = await loginUserService(username);
 
     if (user.error) {
-      console.log("hi");
       return res.status(401).json({
         message: user.error,
       });
