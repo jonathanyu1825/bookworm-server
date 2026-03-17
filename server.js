@@ -26,10 +26,10 @@ app.use("/search", searchRoutes);
 app.use("/book", bookRoutes);
 app.use("/auth", authRoutes);
 
-// app.listen(PORT, () => {
-//     console.log("Server is running");
-// })
-
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, () => {
     console.log("Server is running");
 })
+
+// app.listen(PORT, '0.0.0.0', () => {
+//     console.log("Server is running");
+// })
