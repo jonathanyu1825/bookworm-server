@@ -15,3 +15,15 @@ export async function loginUser(req, res) {
     return res.status(500).json({ message: "internal server errror" });
   }
 }
+
+export async function signupUser(req, res) {
+  try {
+    const { email, username, password } = req.body;
+
+    
+    // check for existing users
+    
+  } catch (error) {
+    return ("sup");
+  }
+} 
