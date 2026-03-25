@@ -19,8 +19,6 @@ export async function loginUser(req, res) {
 export async function signupUser(req, res) {
   try {
     const { email, username, password } = req.body;
-
-    
     // check for existing users
     
   } catch (error) {

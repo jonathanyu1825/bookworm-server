@@ -1,4 +1,5 @@
 import { supabase } from "../utils/supabaseClient.js";
+import createError from 'http-errors';
 
 export async function loginUserService(username) {
   // https://supabase.com/docs/reference/javascript/admin-api
@@ -38,7 +39,6 @@ export async function signupUserService(username, email, password) {
       },
     });
   } else {
-    // throw an error
-    // use npm package or create my own error types?
+    throw new createError.Conflict('User already exists.');
   }
 }
