@@ -38,6 +38,7 @@ export async function signupUserService(username, email, password) {
       },
     });
   } else {
-    
+    // throw an error
+    // use npm package or create my own error types?
   }
 }
