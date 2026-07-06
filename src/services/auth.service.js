@@ -1,5 +1,5 @@
 import { supabase } from "../utils/supabaseClient.js";
-import createError from 'http-errors';
+import createError from "http-errors";
 
 export async function loginUserService(username) {
   // https://supabase.com/docs/reference/javascript/admin-api
@@ -17,16 +17,18 @@ export async function loginUserService(username) {
   return { email: data.user.email };
 }
 
-export async function signupUserService(username, email, password) {
+export async function signupUserService({ username, email, password }) {
   // todo: check if username exists
 
-  const { error: usernameExistsError } = await supabase
-    .from("users")
-    .select("id")
-    .eq("username", username)
-    .maybeSingle();
+  const { data: usernameExistsData, error: usernameExistsError } =
+    await supabase
+      .from("users")
+      .select("id")
+      .eq("username", username)
+      .maybeSingle();
 
-  if (!data) {
+
+  if (!usernameExistsData) {
     const defaultProfileImage =
       "https://piehvbdsttqyyfswhtjk.supabase.co/storage/v1/object/public/user_avatars/default_profile.png";
 
@@ -38,7 +40,9 @@ export async function signupUserService(username, email, password) {
         username: username,
       },
     });
+    console.log(error);
+    console.log("sup");
   } else {
-    throw new createError.Conflict('User already exists.');
+    throw new createError.Conflict("User already exists.");
   }
 }

@@ -3,6 +3,7 @@ import { searchService } from "../services/search.service.js";
 export async function searchController(req, res) {
     const { query } = req.params;
     try {
+        console.log("hi");
         const searchResults = await searchService(query);
         res.json(searchResults);
     } catch(err) {

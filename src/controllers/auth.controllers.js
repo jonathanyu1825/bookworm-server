@@ -1,4 +1,5 @@
 import { loginUserService } from "../services/auth.service.js";
+import { signupUserService } from "../services/auth.service.js";
 
 export async function loginUser(req, res) {
   try {
@@ -19,9 +20,17 @@ export async function loginUser(req, res) {
 export async function signupUser(req, res) {
   try {
     const { email, username, password } = req.body;
+
+    const user = await signupUserService({ email, username, password });
+
+    // const { data, error } = await supabase.auth.admin.createUser({
+    //   email,
+    //   password,
+    // })
     // check for existing users
-    
+
+    // https://supabase.com/docs/reference/javascript/auth-admin-createuser
   } catch (error) {
-    return ("sup");
+    return "sup";
   }
-} 
+}
