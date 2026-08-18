@@ -72,6 +72,6 @@ export async function bookService(id) {
     // await redis.set(`book-${id}`, JSON.stringify(response.data.book));
     return bookInfo;
   } catch (error) {
-    console.log("error here");
+    console.log("error", error);
   }
 }
