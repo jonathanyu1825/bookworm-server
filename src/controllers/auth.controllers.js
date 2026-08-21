@@ -22,15 +22,8 @@ export async function signupUser(req, res) {
     const { email, username, password } = req.body;
 
     const user = await signupUserService({ email, username, password });
-
-    // const { data, error } = await supabase.auth.admin.createUser({
-    //   email,
-    //   password,
-    // })
-    // check for existing users
-
-    // https://supabase.com/docs/reference/javascript/auth-admin-createuser
+    res.status(201).json(user);
   } catch (error) {
-    return "sup";
+    next(error);
   }
 }

@@ -7,6 +7,7 @@ import bookRoutes from "./src/routes/books.routes.js";
 import searchRoutes from "./src/routes/search.routes.js";
 import trendingRoutes from "./src/routes/trending.routes.js";
 import authRoutes from "./src/routes/auth.routes.js";
+import { errorHandler } from "./src/middleware/errorHandler.js";
 
 
 import { connectRedis } from "./src/config/redis.js";
@@ -35,6 +36,8 @@ app.use("/trending", trendingRoutes);
 app.use("/search", searchRoutes);
 app.use("/book", bookRoutes);
 app.use("/auth", authRoutes);
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
     console.log("Server is running");
