@@ -7,6 +7,7 @@ export function errorHandler(err, req, res, next) {
     error: {
       message,
       status,
+      field: err.field,
     },
   });
 }

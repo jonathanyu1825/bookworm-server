@@ -25,18 +25,21 @@ export async function signupUserService({ username, email, password }) {
     .maybeSingle();
 
   if (usernameExists) {
-    throw new createError.Conflict("User already exists.");
-
-    // const defaultProfileImage =
-    //   "https://piehvbdsttqyyfswhtjk.supabase.co/storage/v1/object/public/user_avatars/default_profile.png";
-
-    // const { data, error } = await supabase.auth.admin.createUser({
-    //   email: email,
-    //   password: password,
-    //   user_metadata: {
-    //     avatar_url: defaultProfileImage,
-    //     username: username,
-    //   },
-    // });
+    const error = new createError.Conflict("Username already exists.");
+    error.field = "username";
+    throw error;
   }
+
+  
+  const defaultProfileImage =
+    "https://piehvbdsttqyyfswhtjk.supabase.co/storage/v1/object/public/user_avatars/default_profile.png";
+
+  const { data, error } = await supabase.auth.admin.createUser({
+    email: email,
+    password: password,
+    user_metadata: {
+      avatar_url: defaultProfileImage,
+      username: username,
+    },
+  });
 }
