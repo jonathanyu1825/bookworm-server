@@ -30,16 +30,17 @@ export async function signupUserService({ username, email, password }) {
     throw error;
   }
 
-  
   const defaultProfileImage =
     "https://piehvbdsttqyyfswhtjk.supabase.co/storage/v1/object/public/user_avatars/default_profile.png";
 
-  const { data, error } = await supabase.auth.admin.createUser({
-    email: email,
-    password: password,
-    user_metadata: {
-      avatar_url: defaultProfileImage,
-      username: username,
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        avatar_url: defaultProfileImage,
+        username,
+      },
     },
   });
 }
