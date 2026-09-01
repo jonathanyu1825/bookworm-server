@@ -44,3 +44,8 @@ export async function signupUserService({ username, email, password }) {
     },
   });
 }
+
+export async function deleteUserService({ userId }) {
+  const { data, error } = await supabase.auth.admin.deleteUser({ userId });
+  
+}
