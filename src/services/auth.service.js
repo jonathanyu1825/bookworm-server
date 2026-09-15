@@ -43,6 +43,10 @@ export async function signupUserService({ username, email, password }) {
       },
     },
   });
+  if (error) {
+    throw error;
+  }
+  return data;
 }
 
 export async function deleteUserService({ userId }) {
