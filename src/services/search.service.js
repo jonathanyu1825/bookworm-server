@@ -41,7 +41,7 @@ export async function searchService(query) {
       params: {
         q: query,
         key: GB_KEY,
-        maxResults: 40,
+        maxResults: 50,
         // startIndex: 2,
       },
     });
