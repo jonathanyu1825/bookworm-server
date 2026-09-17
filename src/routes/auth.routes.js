@@ -13,6 +13,6 @@ router.post('/login', loginUser);
 
 router.post('/signup', signupUser);
 
-router.delete('account', deleteUser);
+router.delete('/account', deleteUser);
 
 export default router;
