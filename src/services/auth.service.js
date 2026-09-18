@@ -45,14 +45,18 @@ export async function signupUserService({ username, email, password }) {
     },
   });
 
+  console.log(data.user.identities);
 
 
 
 
 
 
+  
+  // create email lookup table 
 
-  // USE THE DATA FROM THE ABOVE LINE TO CHECK IF THE EMAIL ALREADY EXISTS
+
+
 
 
 
