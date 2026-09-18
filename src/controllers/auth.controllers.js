@@ -1,5 +1,7 @@
 import { loginUserService } from "../services/auth.service.js";
 import { signupUserService } from "../services/auth.service.js";
+import { deleteUserService } from "../services/auth.service.js";
+import { supabase } from "../utils/supabaseClient.js";
 
 export async function loginUser(req, res) {
   try {
@@ -28,10 +30,27 @@ export async function signupUser(req, res, next) {
   }
 }
 
-export async function deleteUser(req, res) {
+export async function deleteUser(req, res, next) {
   try {
-    const { userId } = req.body;
-    await deleteUserService({ userId });
+
+    const token = req.headers.authorization?.split(" ")[1];
+
+    if (!token) {
+      console.log("hi");
+      return res.status(401).json({
+        error: "Unauthorized",
+      });
+    }
+    const {
+      data: { user },
+      error,
+    } = await supabase.auth.getUser(token);
+
+    if (error) {
+      console.log(error);
+    }
+
+    await deleteUserService(user.id );
     res.status(200).json({
       message: "Account deleted successfully",
     });

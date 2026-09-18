@@ -30,6 +30,7 @@ export async function signupUserService({ username, email, password }) {
     throw error;
   }
 
+
   const defaultProfileImage =
     "https://piehvbdsttqyyfswhtjk.supabase.co/storage/v1/object/public/user_avatars/default_profile.png";
 
@@ -49,7 +50,13 @@ export async function signupUserService({ username, email, password }) {
   return data;
 }
 
-export async function deleteUserService({ userId }) {
-  const { data, error } = await supabase.auth.admin.deleteUser({ userId });
+export async function deleteUserService( userId ) {
+  console.log(userId);
+  const { data, error } = await supabase.auth.admin.deleteUser( userId );
+  if (error) {
+    throw error;
+  }
+
+  return data;
   
 }
