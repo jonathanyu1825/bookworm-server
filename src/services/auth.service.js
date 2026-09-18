@@ -30,6 +30,7 @@ export async function signupUserService({ username, email, password }) {
     throw error;
   }
 
+
   const defaultProfileImage =
     "https://piehvbdsttqyyfswhtjk.supabase.co/storage/v1/object/public/user_avatars/default_profile.png";
 
@@ -43,7 +44,22 @@ export async function signupUserService({ username, email, password }) {
       },
     },
   });
+
+
+
+
+
+
+
+
+  // USE THE DATA FROM THE ABOVE LINE TO CHECK IF THE EMAIL ALREADY EXISTS
+
+
+
+
+
   if (error) {
+
     throw error;
   }
   return data;
