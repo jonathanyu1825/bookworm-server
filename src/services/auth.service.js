@@ -50,8 +50,9 @@ export async function signupUserService({ username, email, password }) {
 }
 
 export async function deleteUserService(userId) {
+  const { data: deleteUsernameData, error: deleteUsernameError } =
+    await supabase.from("users").delete().eq("id", userId);
   const { data, error } = await supabase.auth.admin.deleteUser(userId);
-  const { data: deleteUsernameData, error: deleteUsernameError} = await supabase.from("users").delete().eq("id", userId);
 
   if (error) {
     throw error;
