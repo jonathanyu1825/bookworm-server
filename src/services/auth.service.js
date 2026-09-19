@@ -43,14 +43,14 @@ export async function signupUserService({ username, email, password }) {
     );
 
     if (data.user.user_metadata.email_verified) {
-      const error = new createError.Conflict("This account exists.");
+      const error = new createError.Conflict("This email exists.");
       error.field = "email";
       throw error;
     } else {
       const error = new createError.Conflict(
         "Your account is awaiting confirmation!",
       );
-      error.field = "email";
+      error.field = "verification";
       throw error;
     }
   }
